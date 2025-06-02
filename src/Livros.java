@@ -23,8 +23,8 @@ public Livros(String Titulo, String Autor, String Editora, int ISBN, int Qtd, in
 	public void setTitulo(String Titulo) {this.Titulo = Titulo;}
 	public void setAutor(String Autor) {this.Autor = Autor;}
 	public void setEditora(String Editora) {this.Editora = Editora;}
-	public void setSerie(int ISBN) {this.ISBN = ISBN;}
-	public void setTurma(int Qtd) {this.Qtd = Qtd;}
+	public void setISBN(int ISBN) {this.ISBN = ISBN;}
+	public void setQtd(int Qtd) {this.Qtd = Qtd;}
 	public void setAno(int Ano) {this.Ano = Ano;}
 	
 	public String getTitulo() { return Titulo; }

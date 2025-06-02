@@ -117,7 +117,7 @@ public class Main {
         } while (opcao != 0);
     }
 
-    /// Aqui será o menu dos métodos para emprestimo 
+    /// Menu para chamadas dos métodos na classe Emprestimos
     public static void menuEmprestimos(Scanner scanner) {
         int opcao;
         do {
@@ -130,30 +130,31 @@ public class Main {
             System.out.println("0 - Voltar");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine(); 
 
             
             switch (opcao) {
-                case 1:
-                    // emprestarLivro();
-                    break;
-                case 2:
-                    // registrarDevolucao();
-                    break;
-                case 3:
-                    // listarLivrosEmprestados();
-                    break;
-                case 4:
-                    // verificarLivrosDisponiveis();
-                    break;
-                case 5:
-                    // guardarHistoricoEmprestimo();
-                    break;
-                case 0:
-                    System.out.println("Voltando ao menu principal...");
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
+            case 1:
+                Emprestimos.realizarEmprestimo(scanner, Livros.listaLivros);
+                break;
+            case 2:
+                Emprestimos.registrarDevolucao(scanner, Livros.listaLivros);
+                break;
+            case 3:
+                Emprestimos.listarLivrosEmprestados();
+                break;
+            case 4:
+                Emprestimos.listarLivrosDisponiveis(Livros.listaLivros);
+                break;
+            case 5:
+                Emprestimos.mostrarHistoricoEmprestimos();
+                break;
+            case 0:
+                System.out.println("Voltando ao menu principal...");
+                break;
+            default:
+                System.out.println("Opção inválida.");
+
             }
         } while (opcao != 0);
     }
