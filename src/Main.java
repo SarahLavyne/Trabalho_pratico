@@ -36,11 +36,13 @@ public class Main {
         scanner.close();
     }
 
-    // Menu de operações com Livros
+
+ // Menu de operações com Livros
     public static void menuLivros(Scanner scanner) {
         int opcao;
         do {
             System.out.println("\n=== Menu Livros ===");
+            System.out.println("1 - Cadastrar livro");
             System.out.println("2 - Consultar por ISBN");
             System.out.println("3 - Listar livros");
             System.out.println("4 - Remover livro");
@@ -50,21 +52,22 @@ public class Main {
             opcao = scanner.nextInt();
             scanner.nextLine();
 
-            
             switch (opcao) {
-            	case 1:
-            		// cadastrarLivro();
+                case 1:
+                    Livros novoLivro = Livros.cadastrarLivro();
+                    Livros.listaLivros.add(novoLivro); 
+                    break;
                 case 2:
-                    // consultarPorIsbn();
+                    Livros.buscarPorISBN();
                     break;
                 case 3:
-                    // listarLivros();
+                    Livros.listarLivros();
                     break;
                 case 4:
-                    // removerLivro();
+                    Livros.removerLivro();
                     break;
                 case 5:
-                    // buscarLivroPorAutor();
+                    Livros.listarPorAutor();
                     break;
                 case 0:
                     System.out.println("Voltando ao menu principal...");
@@ -74,6 +77,7 @@ public class Main {
             }
         } while (opcao != 0);
     }
+
 
     // Aqui será o menu dos métodos para usuários 
     public static void menuUsuarios(Scanner scanner) {
