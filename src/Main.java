@@ -37,7 +37,7 @@ public class Main {
     }
 
 
- // Menu de operações com Livros
+ // Menu para chamada dos métodos na classe Livros
     public static void menuLivros(Scanner scanner) {
         int opcao;
         do {
@@ -79,7 +79,7 @@ public class Main {
     }
 
 
-    // Aqui será o menu dos métodos para usuários 
+    // Menu para chamadas dos métodos na classe Usuario
     public static void menuUsuarios(Scanner scanner) {
         int opcao;
         do {
@@ -95,24 +95,25 @@ public class Main {
 
             
             switch (opcao) {
-                case 1:
-                    // cadastrarUsuario();
-                    break;
-                case 2:
-                    // consultarPorCpf();
-                    break;
-                case 3:
-                    // listarUsuarios();
-                    break;
-                case 4:
-                    // removerUsuario();
-                    break;
-                case 0:
-                    System.out.println("Voltando ao menu principal...");
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
-            }
+            case 1:
+                Usuario.cadastrarUsuario(scanner);
+                break;
+            case 2:
+                Usuario.consultarPorCpf(scanner);
+                break;
+            case 3:
+                Usuario.listarUsuarios();
+                break;
+            case 4:
+            	Usuario.removerUsuario(scanner);
+                break;
+            case 0:
+                System.out.println("Voltando ao menu principal...");
+                break;
+            default:
+                System.out.println("Opção inválida.");
+        }
+
         } while (opcao != 0);
     }
 

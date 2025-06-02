@@ -6,7 +6,7 @@ public class Usuario {
 	private String CPF;
 	
 	public static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-	private static Scanner scanner = new Scanner(System.in);
+	public static Scanner scanner = new Scanner(System.in);
 	
 public Usuario(String Nome, String Email, String CPF) {
 	this.Nome = Nome;

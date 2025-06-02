@@ -10,7 +10,7 @@ public class Livros {
 
 	 // Lista estática que vai guardar todos os livros cadastrados
 	public static ArrayList<Livros> listaLivros = new ArrayList<>();
-    private static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
    
 public Livros(String Titulo, String Autor, String Editora, int ISBN, int Qtd, int Ano ) {
 	this.Titulo = Titulo;
