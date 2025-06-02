@@ -13,7 +13,7 @@ public class Main {
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
             sistemaEscolhido = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine();
 
             switch (sistemaEscolhido) {
                 case 1:
@@ -41,27 +41,29 @@ public class Main {
         int opcao;
         do {
             System.out.println("\n=== Menu Livros ===");
-            System.out.println("1 - Consultar por ISBN");
-            System.out.println("2 - Listar livros");
-            System.out.println("3 - Remover livro");
-            System.out.println("4 - Buscar livro por autor");
+            System.out.println("2 - Consultar por ISBN");
+            System.out.println("3 - Listar livros");
+            System.out.println("4 - Remover livro");
+            System.out.println("5 - Buscar livro por autor");
             System.out.println("0 - Voltar");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
-            scanner.nextLine(); // Limpar buffer
+            scanner.nextLine();
 
-            // Aqui você chama os métodos correspondentes, por exemplo:
+            
             switch (opcao) {
-                case 1:
+            	case 1:
+            		// cadastrarLivro();
+                case 2:
                     // consultarPorIsbn();
                     break;
-                case 2:
+                case 3:
                     // listarLivros();
                     break;
-                case 3:
+                case 4:
                     // removerLivro();
                     break;
-                case 4:
+                case 5:
                     // buscarLivroPorAutor();
                     break;
                 case 0:
@@ -73,7 +75,7 @@ public class Main {
         } while (opcao != 0);
     }
 
-    // Menu de operações com Usuários
+    // Aqui será o menu dos métodos para usuários 
     public static void menuUsuarios(Scanner scanner) {
         int opcao;
         do {
@@ -87,7 +89,7 @@ public class Main {
             opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar buffer
 
-            // Aqui você chama os métodos correspondentes:
+            
             switch (opcao) {
                 case 1:
                     // cadastrarUsuario();
@@ -110,7 +112,7 @@ public class Main {
         } while (opcao != 0);
     }
 
-    // Menu de operações com Empréstimos
+    /// Aqui será o menu dos métodos para emprestimo 
     public static void menuEmprestimos(Scanner scanner) {
         int opcao;
         do {
@@ -125,7 +127,7 @@ public class Main {
             opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar buffer
 
-            // Aqui você chama os métodos correspondentes:
+            
             switch (opcao) {
                 case 1:
                     // emprestarLivro();
