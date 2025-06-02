@@ -9,7 +9,7 @@ public class Livros {
 	private int Ano;
 
 	 // Lista estática que vai guardar todos os livros cadastrados
-    private static ArrayList<Livros> listaLivros = new ArrayList<>();
+	public static ArrayList<Livros> listaLivros = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
    
 public Livros(String Titulo, String Autor, String Editora, int ISBN, int Qtd, int Ano ) {
