@@ -1,4 +1,9 @@
+package Aplicacao;
 import java.util.Scanner;
+
+import Classe.Emprestimos;
+import Classe.Livros;
+import Classe.Usuario;
 
 public class Main {
     public static void main(String[] args) {
