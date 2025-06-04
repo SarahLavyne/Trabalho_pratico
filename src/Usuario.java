@@ -1,3 +1,4 @@
+package Classe;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Usuario {
