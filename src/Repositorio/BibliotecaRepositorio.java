@@ -1,33 +1,33 @@
 package Repositorio;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import Modelo.Emprestimos;
 import Modelo.Livros;
 import Modelo.Usuario;
 
-
 public class BibliotecaRepositorio {
-    private static List<Usuario> usuarios = new ArrayList<>();
-    private static List<Livros> listaLivros = new ArrayList<>();
-    private static List<Emprestimos> emprestimos = new ArrayList<>();
-    private static List<Emprestimos> historicoEmprestimos = new ArrayList<>();
+    
+    
+    private static Map<String, Usuario> usuarios = new HashMap<>();
+    private static Map<String, Livros> listaLivros = new HashMap<>();
+    private static Map<String, Emprestimos> emprestimos = new HashMap<>();
+    private static Map<String, Emprestimos> historicoEmprestimos = new HashMap<>();
 
-    
-    
-    public static List<Livros> getLivros() {	
+    // Getters
+    public static Map<String, Livros> getLivros() {
         return listaLivros;
     }
 
-    public static List<Usuario> getUsuarios() {
+    public static Map<String, Usuario> getUsuarios() {
         return usuarios;
     }
 
-    public static List<Emprestimos> getEmprestimos() {
+    public static Map<String, Emprestimos> getEmprestimos() {
         return emprestimos;
     }
 
-    public static List<Emprestimos> getHistoricoEmprestimos() {
+    public static Map<String, Emprestimos> getHistoricoEmprestimos() {
         return historicoEmprestimos;
     }
 }

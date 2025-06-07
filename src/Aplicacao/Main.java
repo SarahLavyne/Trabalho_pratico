@@ -1,6 +1,7 @@
 package Aplicacao;
 import java.util.Scanner;
-
+import java.util.HashMap;
+import java.util.Map;
 import Modelo.Emprestimos;
 import Modelo.Livros;
 import Modelo.Usuario;
@@ -61,7 +62,7 @@ public class Main {
             switch (opcao) {
                 case 1:
                     Livros novoLivro = Livros.cadastrarLivro(scanner);
-                    BibliotecaRepositorio.getLivros().add(novoLivro);
+                    BibliotecaRepositorio.getLivros().put(String.valueOf(novoLivro.getISBN()), novoLivro);
 
                     break;
                 case 2:
@@ -141,10 +142,11 @@ public class Main {
             
 
             
+            
             switch (opcao) {
             case 1:
-                Emprestimos.realizarEmprestimo(scanner, BibliotecaRepositorio.getLivros());
-                break;
+            	Emprestimos.realizarEmprestimo(scanner);
+            	break;
             case 2:
                 Emprestimos.registrarDevolucao(scanner, BibliotecaRepositorio.getLivros());
                 break;
@@ -162,8 +164,8 @@ public class Main {
                 break;
             default:
                 System.out.println("Opção inválida.");
+        }
 
-            }
         } while (opcao != 0);
     }
 }

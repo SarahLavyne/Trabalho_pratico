@@ -2,6 +2,9 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import Repositorio.BibliotecaRepositorio;
 
 public class Emprestimos {
     static class RegistroEmprestimo {
@@ -21,7 +24,8 @@ public class Emprestimos {
     public static ArrayList<RegistroEmprestimo> emprestimosAtuais = new ArrayList<>();
 
     // FUNÇÃO PARA REALIZAR EMPRÉSTIMO
-    public static void realizarEmprestimo(Scanner scanner, List<Livros> listaLivros) {
+    public static void realizarEmprestimo(Scanner scanner) {
+        Map<String, Livros> livros = BibliotecaRepositorio.getLivros();
         System.out.print("Informe o CPF do usuário: ");
         String cpf = scanner.nextLine();
         boolean usuarioExiste = false;
@@ -39,7 +43,7 @@ public class Emprestimos {
         System.out.print("Informe o título do livro: ");
         String titulo = scanner.nextLine();
 
-        for (Livros livro : listaLivros) {
+        for (Livros livro : BibliotecaRepositorio.getLivros().values()) {
             if (livro.getTitulo().equalsIgnoreCase(titulo)) {
                 if (livro.getQtd() > 1) {
                     livro.setQtd(livro.getQtd() - 1);
@@ -54,11 +58,12 @@ public class Emprestimos {
                 }
             }
         }
+
         System.out.println("Livro não encontrado.");
     }
 
     // FUNÇÃO PARA REGISTRAR DEVOLUÇÃO
-    	public static void registrarDevolucao(Scanner scanner, List<Livros> listaLivros) {
+    	public static void registrarDevolucao(Scanner scanner, Map<String, Livros> livros) {
         System.out.print("Informe o CPF do usuário: ");
         String cpf = scanner.nextLine();
 
@@ -70,12 +75,13 @@ public class Emprestimos {
             if (reg.cpfUsuario.equals(cpf) && reg.tituloLivro.equalsIgnoreCase(titulo)) {
                 emprestimosAtuais.remove(i);
 
-                for (Livros livro : listaLivros) {
+                for (Livros livro : BibliotecaRepositorio.getLivros().values()) {
                     if (livro.getTitulo().equalsIgnoreCase(titulo)) {
                         livro.setQtd(livro.getQtd() + 1);
                         break;
                     }
                 }
+
 
                 System.out.println("Devolução registrada com sucesso!");
                 return;
@@ -99,9 +105,9 @@ public class Emprestimos {
 
     // FUNÇÃO PARA VERIFICAR QUAIS LIVROS ESTÃO DISPONÍVEIS
 
- public static void listarLivrosDisponiveis(List<Livros> listaLivros) {
+    public static void listarLivrosDisponiveis(Map<String, Livros> livros) {
         System.out.println("\nLivros disponíveis na biblioteca:");
-        for (Livros livro : listaLivros) {
+        for (Livros livro : BibliotecaRepositorio.getLivros().values()) {
             if (livro.getQtd() > 0) {
                 System.out.println("Título: " + livro.getTitulo() + " | Quantidade: " + livro.getQtd());
             }

@@ -1,7 +1,9 @@
 package Modelo;
-import java.util.ArrayList;
 
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
+
 import Repositorio.BibliotecaRepositorio;
 
 public class Livros {
@@ -74,8 +76,8 @@ public static void buscarPorISBN(Scanner scanner) {
     scanner.nextLine();
 
     boolean encontrado = false;
-    for (Livros livro : BibliotecaRepositorio.getLivros()) {
-        if (livro.getISBN() == isbnBuscado) {
+    for (Livros livro : BibliotecaRepositorio.getLivros().values()) {
+    	if (String.valueOf(livro.getISBN()).equals(String.valueOf(isbnBuscado))) {
             System.out.println("Livro encontrado:");
             System.out.println("Título: " + livro.getTitulo());
             System.out.println("Autor: " + livro.getAutor());
@@ -86,6 +88,7 @@ public static void buscarPorISBN(Scanner scanner) {
             break;
         }
     }
+
     if (!encontrado) {
         System.out.println("Livro com ISBN " + isbnBuscado + " não encontrado.");
     }
@@ -98,7 +101,8 @@ public static void listarLivros() {
         return;
     }
     System.out.println("Lista de livros cadastrados:");
-    for (Livros livro : BibliotecaRepositorio.getLivros()) {
+    for (Map.Entry<String, Livros> entry : BibliotecaRepositorio.getLivros().entrySet()) {
+        Livros livro = entry.getValue();
         System.out.println("---------------------------");
         System.out.println("Título: " + livro.getTitulo());
         System.out.println("Autor: " + livro.getAutor());
@@ -107,6 +111,7 @@ public static void listarLivros() {
         System.out.println("Quantidade: " + livro.getQtd());
         System.out.println("Ano: " + livro.getAno());
     }
+
 }
 //FUNÇÃO REMOVER LIVROS POR ISBN
 public static void removerLivro() {
@@ -145,7 +150,9 @@ public static void listarPorAutor() {
     String autorBusca = scanner.nextLine().trim();
 
     boolean encontrado = false;
-    for (Livros livro : BibliotecaRepositorio.getLivros()) {
+
+    for (Map.Entry<String, Livros> entry : BibliotecaRepositorio.getLivros().entrySet()) {
+        Livros livro = entry.getValue();
         if (livro.getAutor().equalsIgnoreCase(autorBusca)) {
             if (!encontrado) {
                 System.out.println("Livros do autor \"" + autorBusca + "\":");
@@ -161,8 +168,9 @@ public static void listarPorAutor() {
     }
 
     if (!encontrado) {
-        System.out.println("Nenhum livro encontrado para o autor \"" + autorBusca + "\".");
+        System.out.println("Nenhum livro encontrado para o autor: " + autorBusca);
     }
+
 }
 
 }
