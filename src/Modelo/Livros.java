@@ -1,5 +1,9 @@
+package Modelo;
 import java.util.ArrayList;
+
 import java.util.Scanner;
+import Repositorio.BibliotecaRepositorio;
+
 public class Livros {
 	private String Titulo;
 	private String Autor;
@@ -7,9 +11,7 @@ public class Livros {
 	private int ISBN;
 	private int Qtd;
 	private int Ano;
-
-	 // Lista estática que vai guardar todos os livros cadastrados
-	public static ArrayList<Livros> listaLivros = new ArrayList<>();
+	
     public static Scanner scanner = new Scanner(System.in);
    
 public Livros(String Titulo, String Autor, String Editora, int ISBN, int Qtd, int Ano ) {
@@ -35,8 +37,8 @@ public Livros(String Titulo, String Autor, String Editora, int ISBN, int Qtd, in
     public int getAno() { return Ano; }
 
 // FUNÇÃO PARA CADASTRAR OS LIVROS
-public static Livros cadastrarLivro() {
-	Scanner scanner = new Scanner(System.in);
+public static Livros cadastrarLivro(Scanner scanner) {
+	
 	System.out.println("Digite o título:");
 	String titulo = scanner.nextLine();
 	
@@ -61,8 +63,8 @@ public static Livros cadastrarLivro() {
     }
 
 //FUNÇÃO PARA PROCURAR POR ISBN
-public static void buscarPorISBN() {
-    if (listaLivros.isEmpty()) {
+public static void buscarPorISBN(Scanner scanner) {
+    if (BibliotecaRepositorio.getLivros().isEmpty()) {
         System.out.println("Nenhum livro cadastrado.");
         return;
     }
@@ -72,7 +74,7 @@ public static void buscarPorISBN() {
     scanner.nextLine();
 
     boolean encontrado = false;
-    for (Livros livro : listaLivros) {
+    for (Livros livro : BibliotecaRepositorio.getLivros()) {
         if (livro.getISBN() == isbnBuscado) {
             System.out.println("Livro encontrado:");
             System.out.println("Título: " + livro.getTitulo());
@@ -91,12 +93,12 @@ public static void buscarPorISBN() {
 
 //FUNÇÃO PARA LISTAR OS LIVROS
 public static void listarLivros() {
-    if (listaLivros.isEmpty()) {
+    if (BibliotecaRepositorio.getLivros().isEmpty()) {
         System.out.println("Nenhum livro cadastrado.");
         return;
     }
     System.out.println("Lista de livros cadastrados:");
-    for (Livros livro : listaLivros) {
+    for (Livros livro : BibliotecaRepositorio.getLivros()) {
         System.out.println("---------------------------");
         System.out.println("Título: " + livro.getTitulo());
         System.out.println("Autor: " + livro.getAutor());
@@ -108,7 +110,7 @@ public static void listarLivros() {
 }
 //FUNÇÃO REMOVER LIVROS POR ISBN
 public static void removerLivro() {
-    if (listaLivros.isEmpty()) {
+    if (BibliotecaRepositorio.getLivros().isEmpty()) {
         System.out.println("Nenhum livro cadastrado.");
         return;
     }
@@ -118,9 +120,9 @@ public static void removerLivro() {
     scanner.nextLine();
 
     boolean removido = false;
-    for (int i = 0; i < listaLivros.size(); i++) {
-        if (listaLivros.get(i).getISBN() == isbnRemover) {
-            listaLivros.remove(i);
+    for (int i = 0; i < BibliotecaRepositorio.getLivros().size(); i++) {
+        if (BibliotecaRepositorio.getLivros().get(i).getISBN() == isbnRemover) {
+        	BibliotecaRepositorio.getLivros().remove(i);
             System.out.println("Livro removido com sucesso.");
             removido = true;
             break;
@@ -134,7 +136,7 @@ public static void removerLivro() {
 
 //FUNÇÃO PARA BUSCAR POR AUTOR
 public static void listarPorAutor() {
-    if (listaLivros.isEmpty()) {
+    if (BibliotecaRepositorio.getLivros().isEmpty()) {
         System.out.println("Nenhum livro cadastrado.");
         return;
     }
@@ -143,7 +145,7 @@ public static void listarPorAutor() {
     String autorBusca = scanner.nextLine().trim();
 
     boolean encontrado = false;
-    for (Livros livro : listaLivros) {
+    for (Livros livro : BibliotecaRepositorio.getLivros()) {
         if (livro.getAutor().equalsIgnoreCase(autorBusca)) {
             if (!encontrado) {
                 System.out.println("Livros do autor \"" + autorBusca + "\":");

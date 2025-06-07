@@ -1,5 +1,7 @@
+package Modelo;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class Emprestimos {
     static class RegistroEmprestimo {
@@ -19,7 +21,7 @@ public class Emprestimos {
     public static ArrayList<RegistroEmprestimo> emprestimosAtuais = new ArrayList<>();
 
     // FUNÇÃO PARA REALIZAR EMPRÉSTIMO
-    public static void realizarEmprestimo(Scanner scanner, ArrayList<Livros> listaLivros) {
+    public static void realizarEmprestimo(Scanner scanner, List<Livros> listaLivros) {
         System.out.print("Informe o CPF do usuário: ");
         String cpf = scanner.nextLine();
         boolean usuarioExiste = false;
@@ -56,7 +58,7 @@ public class Emprestimos {
     }
 
     // FUNÇÃO PARA REGISTRAR DEVOLUÇÃO
-    public static void registrarDevolucao(Scanner scanner, ArrayList<Livros> listaLivros) {
+    	public static void registrarDevolucao(Scanner scanner, List<Livros> listaLivros) {
         System.out.print("Informe o CPF do usuário: ");
         String cpf = scanner.nextLine();
 
@@ -96,7 +98,8 @@ public class Emprestimos {
     }
 
     // FUNÇÃO PARA VERIFICAR QUAIS LIVROS ESTÃO DISPONÍVEIS
-    public static void listarLivrosDisponiveis(ArrayList<Livros> listaLivros) {
+
+ public static void listarLivrosDisponiveis(List<Livros> listaLivros) {
         System.out.println("\nLivros disponíveis na biblioteca:");
         for (Livros livro : listaLivros) {
             if (livro.getQtd() > 0) {

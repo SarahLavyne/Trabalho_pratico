@@ -1,4 +1,10 @@
+package Aplicacao;
 import java.util.Scanner;
+
+import Modelo.Emprestimos;
+import Modelo.Livros;
+import Modelo.Usuario;
+import Repositorio.BibliotecaRepositorio;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,11 +60,12 @@ public class Main {
 
             switch (opcao) {
                 case 1:
-                    Livros novoLivro = Livros.cadastrarLivro();
-                    Livros.listaLivros.add(novoLivro); 
+                    Livros novoLivro = Livros.cadastrarLivro(scanner);
+                    BibliotecaRepositorio.getLivros().add(novoLivro);
+
                     break;
                 case 2:
-                    Livros.buscarPorISBN();
+                    Livros.buscarPorISBN(scanner);
                     break;
                 case 3:
                     Livros.listarLivros();
@@ -131,20 +138,21 @@ public class Main {
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine(); 
+            
 
             
             switch (opcao) {
             case 1:
-                Emprestimos.realizarEmprestimo(scanner, Livros.listaLivros);
+                Emprestimos.realizarEmprestimo(scanner, BibliotecaRepositorio.getLivros());
                 break;
             case 2:
-                Emprestimos.registrarDevolucao(scanner, Livros.listaLivros);
+                Emprestimos.registrarDevolucao(scanner, BibliotecaRepositorio.getLivros());
                 break;
             case 3:
                 Emprestimos.listarLivrosEmprestados();
                 break;
             case 4:
-                Emprestimos.listarLivrosDisponiveis(Livros.listaLivros);
+                Emprestimos.listarLivrosDisponiveis(BibliotecaRepositorio.getLivros());
                 break;
             case 5:
                 Emprestimos.mostrarHistoricoEmprestimos();
